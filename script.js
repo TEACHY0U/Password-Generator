@@ -22,10 +22,33 @@ function generatePassword() {
 
   }
 
+  if (passwordLength > 128) {
+    alert("Password must not have more than 128 characters!")
+    return "";
+  }
 
+// creates boolean for lowercase yes or no.
 
+var lowercaseCharChoice = confirm("Lowercase Characters?")
 
-  
+if (lowercaseCharChoice) {
+  passwordChar += lowercaseChar;
+}
+
+// creates boolean for uppercase yes or no.
+var uppercaseCharChoice = confirm("Uppercase Characters?")
+
+if (uppercaseCharChoice) {
+  passwordChar += uppercaseChar;
+}
+
+// creates boolean for numbers yes or no.
+var numberCharChoice = confirm("Do you want numbers for your password?")
+
+if (numberCharChoice) {
+  passwordChar += numberChar;
+}
+
 }
 
 // Write password to the #password input
