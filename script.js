@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberChar = "0123456789";
-var specialChar = "!@#$%^&*()*-.:;<>=?{}[]|`~/+"
+var specialChar = "!@#$%^&*()*-.:;<>=?{}[]|`~/+";
 
 
 function generatePassword() {
@@ -49,6 +49,15 @@ if (numberCharChoice) {
   passwordChar += numberChar;
 }
 
+// creates boolean for special characters yes or no.
+var specialCharChoice = confirm("Do you want special characters for your password?")
+
+if (specialCharChoice)
+  passwordChar += specialChar;
+
+// for (var i = 0; i < passwordLength; i++) {
+//   password = passwordChar [Math.floor(Math.random() * passwordChar.length)] 
+
 }
 
 // Write password to the #password input
@@ -62,3 +71,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
