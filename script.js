@@ -1,12 +1,10 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
 
 var enter;
 var confirmNumber;
 var confirmCharacter;
 var confirmUppercase;
 var confirmLowercase;
-
 
 lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 numberChar = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -21,6 +19,14 @@ var toUpper = function (x) {
 
 // creates a variable for uppercase conversion
 uppercaseChar = lowercaseChar.map(toUpper);
+
+
+var generateBtn = document.querySelector("#generate");
+
+generateBtn.addEventListener("click", function () {
+  ps = generatePassword();
+  document.getElementById("password").placeholder = ps;
+});
 
 // Start function generate password
 function generatePassword() {
@@ -52,50 +58,50 @@ if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercas
 // If statement that uses input prompts to determine choices
 
 else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
-  choices = character.concat(numberChar, lowercaseChar, uppercaseChar);
+  choices = specialChar.concat(numberChar, lowercaseChar, uppercaseChar);
 
 }
 
  // Else if for 3 positive options
  else if (confirmCharacter && confirmNumber && confirmUppercase) {
-  choices = character.concat(numberChar, uppercaseChar);
+  choices = specialChar.concat(numberChar, uppercaseChar);
 }
 else if (confirmCharacter && confirmNumber && confirmLowercase) {
-  choices = character.concat(number, lowercaseChar);
+  choices = specialChar.concat(numberChar, lowercaseChar);
 }
 else if (confirmCharacter && confirmLowercase && confirmUppercase) {
-  choices = character.concat(lowercaseChar, uppercaseChar);
+  choices = specialChar.concat(lowercaseChar, uppercaseChar);
 }
 else if (confirmNumber && confirmLowercase && confirmUppercase) {
-  choices = number.concat(lowercaseChar, uppercaseChar);
+  choices = numberChar.concat(lowercaseChar, uppercaseChar);
 }
 
  // Else if for 2 positive options 
 else if (confirmCharacter && confirmNumber) {
-  choices = character.concat(number);
+  choices = specialChar.concat(numberChar);
 
 } else if (confirmCharacter && confirmLowercase) {
-  choices = character.concat(lowercaseChar);
+  choices = specialChar.concat(lowercaseChar);
 
 } else if (confirmCharacter && confirmUppercase) {
-  choices = character.concat(uppercaseChar);
+  choices = specialChar.concat(uppercaseChar);
 }
 else if (confirmLowercase && confirmNumber) {
-  choices = lowercaseChar.concat(number);
+  choices = lowercaseChar.concat(numberChar);
 
 } else if (confirmLowercase && confirmUppercase) {
   choices = lowercaseChar.concat(uppercaseChar);
 
 } else if (confirmNumber && confirmUppercase) {
-  choices = number.concat(uppercaseChar);
+  choices = numberChar.concat(uppercaseChar);
 }
 
    // Else if for 1 positive option
 else if (confirmCharacter) {
-  choices = character;
+  choices = specialChar;
 }
 else if (confirmNumber) {
-  choices = number;
+  choices = numberChar;
 }
 else if (confirmLowercase) {
   choices = lowercaseChar;
@@ -116,22 +122,10 @@ var password = [];
     UserInput(ps);
     return ps;
 }
-// This puts the password value into the textbox
-// Changed function input to use textcontent
+// This puts the password value into the textBox
+// Changed function input to use textContent
 function UserInput(ps) {
-    document.getElementById("#password").textContent = ps;
+    document.getElementById("password").textContent = ps;
 
 }
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
